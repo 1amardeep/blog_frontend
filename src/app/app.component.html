@@ -1,3 +1,6 @@
+<div *ngIf="loadingService.loading$ | async" class="spinnerContainer">
+  <mat-spinner ngClass="spinner"></mat-spinner>
+</div>
 <mat-toolbar color="primary">
   <mat-icon>edit</mat-icon>
   <span [routerLink]="['/']" ngClass="">My Blog</span>

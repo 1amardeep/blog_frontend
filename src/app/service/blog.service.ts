@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
 import { blog } from '../models/blog';
-import api from '../interceptors/http';
 import { Observable, from } from 'rxjs';
-import { AxiosResponse } from 'axios';
+import { HttpClient } from '@angular/common/http';
+
+import { environment } from 'src/environments/environment';
+const apiUrl = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlogService {
-  private bloggingList: blog[] = [];
+  constructor(private http: HttpClient) {}
 
-  constructor() {}
-
-  addBlog(blog: blog): Observable<AxiosResponse<any, any>> {
-    return from(
-      api.post('/post', {
-        title: blog.title,
-        description: blog.description,
-      })
-    );
+  addBlog(blog: blog): Observable<blog> {
+    return this.http.post<blog>(`${apiUrl}/post`, {
+      title: blog.title,
+      description: blog.description,
+    });
   }
 
-  getBlog(): Observable<AxiosResponse<any, any>> {
-    return from(api.get('/getAllBlog'));
+  getBlog(): Observable<blog[]> {
+    return this.http.get<blog[]>(`${apiUrl}/getAllBlog`);
   }
 }

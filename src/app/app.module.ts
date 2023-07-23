@@ -10,16 +10,33 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { BlogDetailComponent } from './components/blog-detail/blog-detail.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './interceptors/http_interceptor';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
-  declarations: [AppComponent, BlogFormComponent, BlogListComponent, BlogDetailComponent, PageNotFoundComponent],
+  declarations: [
+    AppComponent,
+    BlogFormComponent,
+    BlogListComponent,
+    BlogDetailComponent,
+    PageNotFoundComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
