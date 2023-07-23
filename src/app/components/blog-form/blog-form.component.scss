@@ -1,0 +1,23 @@
+/* Center the form vertically and horizontally */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Set the width of the form */
+.example-form {
+  width: 400px;
+}
+
+/* Add some spacing between form fields */
+mat-form-field {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Style the Submit button */
+button {
+  width: 100%;
+}

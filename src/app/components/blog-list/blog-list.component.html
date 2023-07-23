@@ -1,0 +1,6 @@
+<ng-container *ngIf="blogs.length > 0; else elseTemplate">
+  <div *ngFor="let blog of blogs">
+    <app-blog-detail [blog]="blog"></app-blog-detail>
+  </div>
+</ng-container>
+<ng-template #elseTemplate> No blog !!! Please create one !!! </ng-template>

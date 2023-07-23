@@ -1,0 +1,18 @@
+/* Set a fixed height for the header */
+mat-toolbar {
+  height: 64px; /* Change the height as needed */
+}
+
+/* Style the logo/icon */
+mat-icon {
+  margin-right: 8px; /* Add some spacing to the right of the icon */
+}
+
+/* Style the header title */
+span {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  display: inline-block;
+  margin-right: 2rem;
+}

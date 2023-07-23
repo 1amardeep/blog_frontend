@@ -1,0 +1,13 @@
+<mat-expansion-panel
+  ngClass="blog_detail"
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> {{ blog.title }} </mat-panel-title>
+    <mat-panel-description>
+      {{ blog.date | date : "medium" }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <p>{{ blog.description }}</p>
+</mat-expansion-panel>
