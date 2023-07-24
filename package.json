@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start:node": "node ../server",
+    "start:node": "nodemon ../server",
     "start:angular": "ng serve",
     "start:both": "concurrently \"npm run start:node\" \"npm run start:angular\"",
     "build": "ng build",
