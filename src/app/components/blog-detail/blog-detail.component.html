@@ -5,8 +5,11 @@
 >
   <mat-expansion-panel-header>
     <mat-panel-title> {{ blog.title }} </mat-panel-title>
-    <mat-panel-description>
+    <mat-panel-description class="justify_center">
       {{ blog.date | date : "medium" }}
+    </mat-panel-description>
+    <mat-panel-description class="justify_center">
+      {{ blog.category }}
     </mat-panel-description>
   </mat-expansion-panel-header>
   <p>{{ blog.description }}</p>

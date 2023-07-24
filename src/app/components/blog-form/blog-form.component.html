@@ -6,6 +6,18 @@
     </mat-form-field>
 
     <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option
+          *ngFor="let category of Categories"
+          [value]="category.viewValue"
+        >
+          {{ category.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
       <mat-label>Description</mat-label>
       <textarea
         matInput

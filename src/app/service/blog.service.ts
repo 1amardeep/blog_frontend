@@ -16,6 +16,7 @@ export class BlogService {
     return this.http.post<blog>(`${apiUrl}/post`, {
       title: blog.title,
       description: blog.description,
+      category: blog.category,
     });
   }
 
