@@ -1,6 +1,25 @@
+<mat-form-field>
+  <mat-label>Category</mat-label>
+  <mat-select
+    [(ngModel)]="selected"
+    (ngModelChange)="getBlogByCategory(selected)"
+  >
+    <mat-option
+      *ngFor="let category of Categories"
+      [value]="category.viewValue"
+    >
+      {{ category.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
 <ng-container *ngIf="blogs.length > 0; else elseTemplate">
   <div *ngFor="let blog of blogs">
     <app-blog-detail [blog]="blog"></app-blog-detail>
   </div>
 </ng-container>
-<ng-template #elseTemplate> No blog !!! Please create one !!! </ng-template>
+<ng-template #elseTemplate>
+  <div>
+    Nothing in this Category 😊😊 !!! Please create one in this category!!!
+  </div>
+</ng-template>

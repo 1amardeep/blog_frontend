@@ -23,4 +23,8 @@ export class BlogService {
   getBlog(): Observable<blog[]> {
     return this.http.get<blog[]>(`${apiUrl}/getAllBlog`);
   }
+
+  getBlogByCategory(Category: string): Observable<blog[]> {
+    return this.http.get<blog[]>(`${apiUrl}/getBlogByCategory/${Category}`);
+  }
 }

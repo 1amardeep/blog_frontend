@@ -30,3 +30,16 @@ span {
     transform: translate(-50%, -50%);
   }
 }
+
+.container {
+  width: 95%;
+  margin: 1rem auto;
+  min-height: 75%;
+}
+
+.footer {
+  padding: 10px;
+  text-align: center;
+  bottom: 0px;
+  position: relative;
+}

@@ -4,13 +4,15 @@
   (closed)="panelOpenState = false"
 >
   <mat-expansion-panel-header>
-    <mat-panel-title> {{ blog.title }} </mat-panel-title>
-    <mat-panel-description class="justify_center">
+    <mat-panel-description class="item1">
+      {{ blog.title }}
+    </mat-panel-description>
+    <mat-panel-description class="item2">
       {{ blog.date | date : "medium" }}
     </mat-panel-description>
-    <mat-panel-description class="justify_center">
+    <mat-panel-description class="item3">
       {{ blog.category }}
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <p>{{ blog.description }}</p>
+  <pre class="pre">{{ blog.description }}</pre>
 </mat-expansion-panel>

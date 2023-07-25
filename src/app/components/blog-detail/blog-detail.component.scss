@@ -2,6 +2,23 @@
   margin-top: 1rem;
 }
 
-.justify_center {
-  justify-content: center;
+.justify_end {
+  justify-content: end;
+}
+
+.pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.item1 {
+  flex: 10;
+}
+
+.item2 {
+  flex: 1;
+}
+
+.item3 {
+  flex: 1;
 }
