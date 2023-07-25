@@ -41,7 +41,7 @@ export class BlogFormComponent implements OnInit {
         date: new Date(),
       };
       this.blogService.addBlog(blog).subscribe((response) => {
-        this.router.navigate(['/blog']);
+        this.router.navigate(['/questionList']);
       });
     }
   }

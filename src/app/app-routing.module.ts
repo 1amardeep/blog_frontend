@@ -10,7 +10,7 @@ const routes: Routes = [
     component: BlogFormComponent,
   },
   {
-    path: 'blog',
+    path: 'questionList',
     component: BlogListComponent,
   },
   { path: '**', component: PageNotFoundComponent },
