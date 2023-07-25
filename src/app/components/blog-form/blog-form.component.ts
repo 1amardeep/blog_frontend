@@ -12,15 +12,7 @@ import { Router } from '@angular/router';
 export class BlogFormComponent implements OnInit {
   formGroup!: FormGroup;
 
-  Categories: category[] = [
-    { value: 'html', viewValue: 'HTML' },
-    { value: 'typescript', viewValue: 'TypeScript' },
-    { value: 'css', viewValue: 'CSS' },
-    { value: 'angular', viewValue: 'Angular' },
-    { value: 'react', viewValue: 'React' },
-    { value: 'vue', viewValue: 'Vue' },
-    { value: 'algorithm', viewValue: 'Algorithm' },
-  ];
+  Categories: category[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +21,9 @@ export class BlogFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.blogService.getSubjectCategory().subscribe((data) => {
+      this.Categories = data;
+    });
     this.formGroup = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],

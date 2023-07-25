@@ -10,19 +10,13 @@ import { BlogService } from 'src/app/service/blog.service';
 export class BlogListComponent implements OnInit {
   blogs: blog[] = [];
   selected = 'All';
-  Categories: category[] = [
-    { value: 'all', viewValue: 'All' },
-    { value: 'html', viewValue: 'HTML' },
-    { value: 'typescript', viewValue: 'TypeScript' },
-    { value: 'css', viewValue: 'CSS' },
-    { value: 'angular', viewValue: 'Angular' },
-    { value: 'react', viewValue: 'React' },
-    { value: 'vue', viewValue: 'Vue' },
-    { value: 'algorithm', viewValue: 'Algorithm' },
-  ];
+  Categories: category[] = [];
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
+    this.blogService.getSubjectCategory().subscribe((data) => {
+      this.Categories = [{ value: 'all', viewValue: 'All' }, ...data];
+    });
     this.blogService.getBlog().subscribe((response) => {
       this.blogs = response;
     });

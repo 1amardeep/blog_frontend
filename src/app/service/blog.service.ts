@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { blog } from '../models/blog';
+import { blog, category } from '../models/blog';
 import { Observable, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -26,5 +26,9 @@ export class BlogService {
 
   getBlogByCategory(Category: string): Observable<blog[]> {
     return this.http.get<blog[]>(`${apiUrl}/getBlogByCategory/${Category}`);
+  }
+
+  getSubjectCategory(): Observable<category[]> {
+    return this.http.get<category[]>(`${apiUrl}/getSubjectCategory`);
   }
 }
