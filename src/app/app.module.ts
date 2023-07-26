@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './interceptors/http_interceptor';
 import { HttpClientModule } from '@angular/common/http';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    QuillModule.forRoot(),
   ],
   providers: [
     {

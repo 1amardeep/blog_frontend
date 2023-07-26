@@ -16,15 +16,11 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Answer</mat-label>
-    <textarea
-      rows="4"
-      matInput
-      formControlName="description"
-      placeholder="Enter Answer"
-    ></textarea>
-  </mat-form-field>
+  <mat-label>Answer</mat-label>
+  <quill-editor
+    formControlName="description"
+    [style]="{ height: '300px' }"
+  ></quill-editor>
 
   <!-- Add any other form fields or buttons as needed -->
 

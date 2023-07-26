@@ -14,5 +14,8 @@
       {{ blog.category }}
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <pre class="pre">{{ blog.description }}</pre>
+  <div
+    [innerHTML]="sanitizeHTML(blog.description)"
+    class="font_overwrite"
+  ></div>
 </mat-expansion-panel>

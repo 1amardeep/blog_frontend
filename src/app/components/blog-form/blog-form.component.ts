@@ -13,6 +13,7 @@ export class BlogFormComponent implements OnInit {
   formGroup!: FormGroup;
 
   Categories: category[] = [];
+  description: string = '';
 
   constructor(
     private formBuilder: FormBuilder,

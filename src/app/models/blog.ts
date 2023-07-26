@@ -1,11 +1,11 @@
 export interface blog {
-  title: String;
-  description: String;
-  category: String;
+  title: string;
+  description: string;
+  category: string;
   date: Date;
 }
 
 export interface category {
-  value: String;
-  viewValue: String;
+  value: string;
+  viewValue: string;
 }
