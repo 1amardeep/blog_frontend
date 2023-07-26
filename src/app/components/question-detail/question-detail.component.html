@@ -1,21 +1,21 @@
 <mat-expansion-panel
-  ngClass="blog_detail"
+  ngClass="question_detail"
   (opened)="panelOpenState = true"
   (closed)="panelOpenState = false"
 >
   <mat-expansion-panel-header>
     <mat-panel-description class="item1">
-      {{ blog.title }}
+      {{ question.title }}
     </mat-panel-description>
     <mat-panel-description class="item2">
-      {{ blog.date | date : "medium" }}
+      {{ question.date | date : "medium" }}
     </mat-panel-description>
     <mat-panel-description class="item3">
-      {{ blog.category }}
+      {{ question.category }}
     </mat-panel-description>
   </mat-expansion-panel-header>
   <div
-    [innerHTML]="sanitizeHTML(blog.description)"
+    [innerHTML]="sanitizeHTML(question.description)"
     class="font_overwrite"
   ></div>
 </mat-expansion-panel>

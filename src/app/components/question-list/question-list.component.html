@@ -2,7 +2,7 @@
   <mat-label>Category</mat-label>
   <mat-select
     [(ngModel)]="selected"
-    (ngModelChange)="getBlogByCategory(selected)"
+    (ngModelChange)="getQuestionByCategory(selected)"
   >
     <mat-option
       *ngFor="let category of Categories"
@@ -13,9 +13,9 @@
   </mat-select>
 </mat-form-field>
 
-<ng-container *ngIf="blogs.length > 0; else elseTemplate">
-  <div *ngFor="let blog of blogs">
-    <app-blog-detail [blog]="blog"></app-blog-detail>
+<ng-container *ngIf="questions.length > 0; else elseTemplate">
+  <div *ngFor="let question of questions">
+    <app-question-detail [question]="question"></app-question-detail>
   </div>
 </ng-container>
 <ng-template #elseTemplate>

@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BlogFormComponent } from './components/blog-form/blog-form.component';
-import { BlogListComponent } from './components/blog-list/blog-list.component';
+import { QuestionFormComponent } from './components/question-form/question-form.component';
+import { QuestionListComponent } from './components/question-list/question-list.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: BlogFormComponent,
+    component: QuestionFormComponent,
   },
   {
     path: 'questionList',
-    component: BlogListComponent,
+    component: QuestionListComponent,
   },
   { path: '**', component: PageNotFoundComponent },
 ];

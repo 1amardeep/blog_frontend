@@ -1,16 +1,16 @@
 import { Component, Input } from '@angular/core';
-import { blog } from 'src/app/models/blog';
+import { question } from 'src/app/models/question';
 import { SafeHtml } from '@angular/platform-browser';
 import { DomSanitizerService } from 'src/app/service/domSanitizer.service';
 
 @Component({
-  selector: 'app-blog-detail',
-  templateUrl: './blog-detail.component.html',
-  styleUrls: ['./blog-detail.component.scss'],
+  selector: 'app-question-detail',
+  templateUrl: './question-detail.component.html',
+  styleUrls: ['./question-detail.component.scss'],
 })
-export class BlogDetailComponent {
+export class QuestionDetailComponent {
   panelOpenState = false;
-  @Input() blog!: blog;
+  @Input() question!: question;
 
   constructor(private sanitizerService: DomSanitizerService) {}
 

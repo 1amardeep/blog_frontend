@@ -1,4 +1,4 @@
-export interface blog {
+export interface question {
   title: string;
   description: string;
   category: string;

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { blog, category } from 'src/app/models/blog';
-import { BlogService } from 'src/app/service/blog.service';
+import { question, category } from 'src/app/models/question';
+import { QuestionService } from 'src/app/service/question.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-blog-form',
-  templateUrl: './blog-form.component.html',
-  styleUrls: ['./blog-form.component.scss'],
+  selector: 'app-question-form',
+  templateUrl: './question-form.component.html',
+  styleUrls: ['./question-form.component.scss'],
 })
-export class BlogFormComponent implements OnInit {
+export class QuestionFormComponent implements OnInit {
   formGroup!: FormGroup;
 
   Categories: category[] = [];
@@ -17,12 +17,12 @@ export class BlogFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private blogService: BlogService,
+    private questionService: QuestionService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.blogService.getSubjectCategory().subscribe((data) => {
+    this.questionService.getSubjectCategory().subscribe((data) => {
       this.Categories = data;
     });
     this.formGroup = this.formBuilder.group({
@@ -35,13 +35,13 @@ export class BlogFormComponent implements OnInit {
   onSubmit() {
     if (this.formGroup.valid) {
       // Perform actions with the form data here
-      let blog: blog = {
+      let question: question = {
         title: this.formGroup.value.title,
         description: this.formGroup.value.description,
         category: this.formGroup.value.category,
         date: new Date(),
       };
-      this.blogService.addBlog(blog).subscribe((response) => {
+      this.questionService.addQuestion(question).subscribe(() => {
         this.router.navigate(['/questionList']);
       });
     }
