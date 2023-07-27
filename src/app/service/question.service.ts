@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { question, category } from '../models/question';
+import { question, category, QuestionQuery } from '../models/question';
 import { Observable, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -24,9 +24,14 @@ export class QuestionService {
     return this.http.get<question[]>(`${apiUrl}/getAllQuestion`);
   }
 
-  getQuestionByCategory(Category: string): Observable<question[]> {
-    return this.http.get<question[]>(
-      `${apiUrl}/getQuestionByCategory/${Category}`
+  getQuestionByFilterCategory(
+    Category: QuestionQuery
+  ): Observable<{ questions: question[]; count: number }> {
+    return this.http.post<{ questions: question[]; count: number }>(
+      `${apiUrl}/getQuestionByFilterCategory`,
+      {
+        ...Category,
+      }
     );
   }
 

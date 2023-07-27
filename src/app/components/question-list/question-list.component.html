@@ -2,7 +2,7 @@
   <mat-label>Category</mat-label>
   <mat-select
     [(ngModel)]="selected"
-    (ngModelChange)="getQuestionByCategory(selected)"
+    (ngModelChange)="changeQuestionByFilterCategory()"
   >
     <mat-option
       *ngFor="let category of Categories"
@@ -23,3 +23,16 @@
     Nothing in this Category 😊😊 !!! Please create one in this category!!!
   </div>
 </ng-template>
+
+<mat-paginator
+  *ngIf="questions.length > 0"
+  #paginator
+  class="demo-paginator"
+  (page)="handlePageEvent($event)"
+  [length]="length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  [pageIndex]="pageIndex"
+  aria-label="Select page"
+>
+</mat-paginator>

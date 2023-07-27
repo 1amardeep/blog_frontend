@@ -9,3 +9,9 @@ export interface category {
   value: string;
   viewValue: string;
 }
+
+export interface QuestionQuery {
+  pageIndex: number;
+  pageSize: number;
+  category: string;
+}
