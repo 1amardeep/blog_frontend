@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { question, category, QuestionQuery } from '../models/question';
+import {
+  question,
+  category,
+  QuestionQuery,
+  AnalyticsData,
+} from '../models/question';
 import { Observable, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -17,6 +22,7 @@ export class QuestionService {
       title: question.title,
       description: question.description,
       category: question.category,
+      color: question.color,
     });
   }
 
@@ -37,5 +43,9 @@ export class QuestionService {
 
   getSubjectCategory(): Observable<category[]> {
     return this.http.get<category[]>(`${apiUrl}/getSubjectCategory`);
+  }
+
+  getAnalyticsData(): Observable<AnalyticsData[]> {
+    return this.http.get<AnalyticsData[]>(`${apiUrl}/getAnalyticsData`);
   }
 }

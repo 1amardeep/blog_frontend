@@ -35,10 +35,14 @@ export class QuestionFormComponent implements OnInit {
   onSubmit() {
     if (this.formGroup.valid) {
       // Perform actions with the form data here
+      let color = this.Categories.find(
+        (obj) => obj.viewValue === this.formGroup.value.category
+      )?.color!;
       let question: question = {
         title: this.formGroup.value.title,
         description: this.formGroup.value.description,
         category: this.formGroup.value.category,
+        color,
         date: new Date(),
       };
       this.questionService.addQuestion(question).subscribe(() => {

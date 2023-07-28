@@ -26,7 +26,10 @@ export class QuestionListComponent implements OnInit {
 
   ngOnInit(): void {
     this.questionService.getSubjectCategory().subscribe((data) => {
-      this.Categories = [{ value: 'all', viewValue: 'All' }, ...data];
+      this.Categories = [
+        { value: 'all', viewValue: 'All', color: '' },
+        ...data,
+      ];
     });
     this.questionService.getQuestion().subscribe((response) => {
       this.questions = response;
