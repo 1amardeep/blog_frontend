@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { question, category, QuestionQuery } from 'src/app/models/question';
 import { QuestionService } from 'src/app/service/question.service';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question-list',
@@ -10,6 +11,8 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
   styleUrls: ['./question-list.component.scss'],
 })
 export class QuestionListComponent implements OnInit {
+  @Input() Islimit!: boolean;
+
   questions: question[] = [];
   selected = 'All';
   Categories: category[] = [];
@@ -21,7 +24,8 @@ export class QuestionListComponent implements OnInit {
 
   constructor(
     private questionService: QuestionService,
-    private paginator: MatPaginatorIntl
+    private paginator: MatPaginatorIntl,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +36,7 @@ export class QuestionListComponent implements OnInit {
       ];
     });
     this.questionService.getQuestion().subscribe((response) => {
-      this.questions = response;
+      this.questions = this.Islimit ? response.slice(0, 5) : response;
       this.length = response.length;
     });
   }
@@ -67,5 +71,9 @@ export class QuestionListComponent implements OnInit {
       pageSize: this.pageSize,
       category: this.selected,
     };
+  }
+
+  addQuestion() {
+    this.router.navigate(['/addQuestions']);
   }
 }

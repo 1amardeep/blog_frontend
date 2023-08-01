@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import Chart from 'chart.js/auto';
+import { ChartOptions } from 'chart.js';
 import { AnalyticsData, category } from 'src/app/models/question';
 import { QuestionService } from 'src/app/service/question.service';
 
@@ -10,6 +10,14 @@ import { QuestionService } from 'src/app/service/question.service';
 })
 export class PieChartComponent {
   public chart: any;
+  // Pie
+  public pieChartOptions: ChartOptions<'pie'> = {
+    responsive: false,
+  };
+  public pieChartLabels: string[] = [];
+  public pieChartDatasets: { data: number[] }[] = [];
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
 
   constructor(private questionService: QuestionService) {}
 
@@ -25,25 +33,8 @@ export class PieChartComponent {
   }
 
   createChart(count: number[], category: string[], color: string[]) {
-    this.chart = new Chart('MyChart', {
-      type: 'pie', //this denotes tha type of chart
-
-      data: {
-        // values on X-Axis
-        labels: category,
-        datasets: [
-          {
-            label: 'My Question Set',
-            data: count,
-            backgroundColor: color,
-            hoverOffset: 4,
-          },
-        ],
-      },
-      options: {
-        aspectRatio: 2.5,
-      },
-    });
+    this.pieChartDatasets = [{ data: count }];
+    this.pieChartLabels = category;
   }
 
   ngOnDestroy() {

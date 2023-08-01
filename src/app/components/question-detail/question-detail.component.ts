@@ -11,6 +11,7 @@ import { DomSanitizerService } from 'src/app/service/domSanitizer.service';
 export class QuestionDetailComponent {
   panelOpenState = false;
   @Input() question!: question;
+  @Input() Islimit!: boolean;
 
   constructor(private sanitizerService: DomSanitizerService) {}
 

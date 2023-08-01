@@ -14,7 +14,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './interceptors/http_interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { QuillModule } from 'ngx-quill';
-//import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { QuillModule } from 'ngx-quill';
     QuestionListComponent,
     QuestionDetailComponent,
     PageNotFoundComponent,
-    // PieChartComponent,
+    DashboardComponent,
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { QuillModule } from 'ngx-quill';
     ReactiveFormsModule,
     HttpClientModule,
     QuillModule.forRoot(),
+    NgChartsModule,
   ],
   providers: [
     {

@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.box {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box_col_dir {
+  flex-direction: column;
+}
+
+.w_100 {
+  width: 100%;
+}

@@ -4,10 +4,15 @@ import { QuestionFormComponent } from './components/question-form/question-form.
 import { QuestionListComponent } from './components/question-list/question-list.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: DashboardComponent,
+  },
+  {
+    path: 'addQuestions',
     component: QuestionFormComponent,
   },
   {

@@ -7,7 +7,7 @@
     <mat-panel-description class="item1">
       {{ question.title }}
     </mat-panel-description>
-    <mat-panel-description class="item2">
+    <mat-panel-description class="item2" *ngIf="!Islimit">
       {{ question.date | date : "medium" }}
     </mat-panel-description>
     <mat-panel-description class="item3">
