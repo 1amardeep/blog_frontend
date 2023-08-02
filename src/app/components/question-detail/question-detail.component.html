@@ -1,9 +1,9 @@
-<mat-expansion-panel
-  ngClass="question_detail"
-  (opened)="panelOpenState = true"
-  (closed)="panelOpenState = false"
->
-  <mat-expansion-panel-header>
+<mat-expansion-panel class="question_detail">
+  <mat-expansion-panel-header
+    #panelH
+    (click)="Islimit ? panelH._toggle() : panelH._isExpanded()"
+    [ngClass]="{ 'is-not-allowed': Islimit }"
+  >
     <mat-panel-description class="item1">
       {{ question.title }}
     </mat-panel-description>

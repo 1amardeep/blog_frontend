@@ -4,6 +4,11 @@ import { question, category, QuestionQuery } from 'src/app/models/question';
 import { QuestionService } from 'src/app/service/question.service';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import {
+  PAGE_INDEX,
+  PAGE_SIZE,
+  PAGE_SIZE_OPTION,
+} from 'src/app/constants/question';
 
 @Component({
   selector: 'app-question-list',
@@ -18,9 +23,9 @@ export class QuestionListComponent implements OnInit {
   Categories: category[] = [];
 
   length!: number;
-  pageSize: number = 10;
-  pageIndex: number = 0;
-  pageSizeOptions = [1, 5, 10, 20];
+  pageSize: number = PAGE_SIZE;
+  pageIndex: number = PAGE_INDEX;
+  pageSizeOptions = PAGE_SIZE_OPTION;
 
   constructor(
     private questionService: QuestionService,
@@ -35,10 +40,14 @@ export class QuestionListComponent implements OnInit {
         ...data,
       ];
     });
-    this.questionService.getQuestion().subscribe((response) => {
-      this.questions = this.Islimit ? response.slice(0, 5) : response;
-      this.length = response.length;
-    });
+    this.questionService
+      .getQuestionByFilterCategory(this.getQueries())
+      .subscribe((response) => {
+        this.questions = this.Islimit
+          ? response.questions.slice(0, 5)
+          : response.questions;
+        this.length = response.count;
+      });
   }
 
   ngAfterViewInit() {
@@ -55,7 +64,8 @@ export class QuestionListComponent implements OnInit {
   }
 
   changeQuestionByFilterCategory() {
-    this.pageIndex = 0;
+    this.pageIndex = PAGE_INDEX;
+    this.pageSize = PAGE_SIZE;
     this.getQuestionByFilterCategory();
   }
 

@@ -1,6 +1,9 @@
 /* Set a fixed height for the header */
 mat-toolbar {
-  height: 64px; /* Change the height as needed */
+  height: 2.5rem; /* Change the height as needed */
+  position: fixed;
+  inset: 0;
+  z-index: 1;
 }
 
 /* Style the logo/icon */
@@ -32,14 +35,14 @@ span {
 }
 
 .container {
-  width: 95%;
+  padding: 3rem;
   margin: 1rem auto;
-  min-height: 75%;
 }
 
 .footer {
   padding: 10px;
   text-align: center;
-  bottom: 0px;
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

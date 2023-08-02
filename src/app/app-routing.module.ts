@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { QuestionFormComponent } from './components/question-form/question-form.component';
 import { QuestionListComponent } from './components/question-list/question-list.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { DoughnutChartComponent } from './components/doughnut-chart/doughnut-chart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'analyticData',
-    component: PieChartComponent,
+    component: DoughnutChartComponent,
   },
   { path: '**', component: PageNotFoundComponent },
 ];

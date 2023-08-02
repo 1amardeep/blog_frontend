@@ -1,23 +1,30 @@
 import { Component } from '@angular/core';
 import { ChartOptions } from 'chart.js';
-import { AnalyticsData, category } from 'src/app/models/question';
 import { QuestionService } from 'src/app/service/question.service';
 
 @Component({
-  selector: 'app-pie-chart',
-  templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.scss'],
+  selector: 'app-doughnut-chart',
+  templateUrl: './doughnut-chart.component.html',
+  styleUrls: ['./doughnut-chart.component.scss'],
 })
-export class PieChartComponent {
+export class DoughnutChartComponent {
   public chart: any;
-  // Pie
-  public pieChartOptions: ChartOptions<'pie'> = {
+  // Doughnut
+  public doughnutChartOptions: any = {
     responsive: false,
+    legend: {
+      position: 'right', // Set the legend position to 'left'
+    },
   };
-  public pieChartLabels: string[] = [];
-  public pieChartDatasets: { data: number[] }[] = [];
-  public pieChartLegend = true;
-  public pieChartPlugins = [];
+  public doughnutChartLabels: string[] = [];
+  public doughnutChartDatasets!: any;
+  public doughnutChartLegend = true;
+  public doughnutChartPlugins = [];
+  doughnutChartColors: any[] = [
+    {
+      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'], // Add your custom colors here
+    },
+  ];
 
   constructor(private questionService: QuestionService) {}
 
@@ -33,8 +40,8 @@ export class PieChartComponent {
   }
 
   createChart(count: number[], category: string[], color: string[]) {
-    this.pieChartDatasets = [{ data: count }];
-    this.pieChartLabels = category;
+    this.doughnutChartDatasets = [{ data: count, backgroundColor: color }];
+    this.doughnutChartLabels = category;
   }
 
   ngOnDestroy() {

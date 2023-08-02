@@ -15,7 +15,7 @@ import { LoadingInterceptor } from './interceptors/http_interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { QuillModule } from 'ngx-quill';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { DoughnutChartComponent } from './components/doughnut-chart/doughnut-chart.component';
 import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { NgChartsModule } from 'ng2-charts';
     QuestionDetailComponent,
     PageNotFoundComponent,
     DashboardComponent,
-    PieChartComponent,
+    DoughnutChartComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,10 +12,16 @@ export class QuestionDetailComponent {
   panelOpenState = false;
   @Input() question!: question;
   @Input() Islimit!: boolean;
+  isExpanded = false;
 
   constructor(private sanitizerService: DomSanitizerService) {}
 
   sanitizeHTML(content: string): SafeHtml {
     return this.sanitizerService.sanitizeHTML(content);
+  }
+
+  onExpansionPanelClicked(event: Event) {
+    // Prevent the expansion of the panel
+    event.preventDefault();
   }
 }
