@@ -1,49 +1,47 @@
-<ng-container *ngIf="show">
-  <div *ngIf="!Islimit" class="d_flex">
-    <mat-form-field>
-      <mat-label>Category</mat-label>
-      <mat-select
-        [(ngModel)]="selected"
-        (ngModelChange)="changeQuestionByFilterCategory()"
-      >
-        <mat-option
-          *ngFor="let category of Categories"
-          [value]="category.viewValue"
-        >
-          {{ category.viewValue }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <button class="btn" (click)="addQuestion()">Add Questions</button>
-  </div>
-
-  <ng-container *ngIf="questions.length > 0; else elseTemplate">
-    <div *ngFor="let question of questions">
-      <app-question-detail
-        [question]="question"
-        [Islimit]="Islimit"
-      ></app-question-detail>
-    </div>
-  </ng-container>
-  <ng-template #elseTemplate>
-    <div>
-      Nothing in this Category 😊😊 !!! Please create one in this category!!!
-    </div>
-  </ng-template>
-
-  <div *ngIf="!Islimit">
-    <mat-paginator
-      *ngIf="questions.length > 0"
-      #paginator
-      class="demo-paginator"
-      (page)="handlePageEvent($event)"
-      [length]="length"
-      [pageSize]="pageSize"
-      [pageSizeOptions]="pageSizeOptions"
-      [pageIndex]="pageIndex"
-      aria-label="Select page"
+<div *ngIf="!Islimit" class="d_flex">
+  <mat-form-field>
+    <mat-label>Category</mat-label>
+    <mat-select
+      [(ngModel)]="selected"
+      (ngModelChange)="changeQuestionByFilterCategory()"
     >
-    </mat-paginator>
+      <mat-option
+        *ngFor="let category of Categories"
+        [value]="category.viewValue"
+      >
+        {{ category.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button class="btn" (click)="addQuestion()">Add Questions</button>
+</div>
+
+<ng-container *ngIf="questions.length > 0; else elseTemplate">
+  <div *ngFor="let question of questions">
+    <app-question-detail
+      [question]="question"
+      [Islimit]="Islimit"
+    ></app-question-detail>
   </div>
 </ng-container>
+<ng-template #elseTemplate>
+  <div>
+    Nothing in this Category 😊😊 !!! Please create one in this category!!!
+  </div>
+</ng-template>
+
+<div *ngIf="!Islimit">
+  <mat-paginator
+    *ngIf="questions.length > 0"
+    #paginator
+    class="demo-paginator"
+    (page)="handlePageEvent($event)"
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="pageIndex"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>

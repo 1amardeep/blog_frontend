@@ -9,7 +9,6 @@ import {
   PAGE_SIZE,
   PAGE_SIZE_OPTION,
 } from 'src/app/constants/question';
-import { LoadingService } from 'src/app/service/spinner.service';
 
 @Component({
   selector: 'app-question-list',
@@ -32,16 +31,10 @@ export class QuestionListComponent implements OnInit {
   constructor(
     private questionService: QuestionService,
     private paginator: MatPaginatorIntl,
-    private router: Router,
-    public loadingService: LoadingService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.loadingService.loading$.subscribe((bool) => {
-      if (!bool) {
-        this.show = true;
-      }
-    });
     this.questionService.getSubjectCategory().subscribe((data) => {
       this.Categories = [
         { value: 'all', viewValue: 'All', color: '' },

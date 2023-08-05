@@ -6,15 +6,4 @@ import { LoadingService } from 'src/app/service/spinner.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
-  show: boolean = false;
-  constructor(public loadingService: LoadingService) {}
-
-  ngOnInit(): void {
-    this.loadingService.loading$.subscribe((bool) => {
-      if (!bool) {
-        this.show = true;
-      }
-    });
-  }
-}
+export class DashboardComponent {}
