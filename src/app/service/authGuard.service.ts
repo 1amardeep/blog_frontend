@@ -27,6 +27,7 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (this.questionService.isAuthenticated()) {
+      this.questionService.setToken(this.questionService.getToken()!);
       return true;
     } else {
       // Redirect to login page with the intended URL as a query parameter
