@@ -64,8 +64,8 @@ export class QuestionService {
     return this.http.post<IResponse>(`${apiUrl}/signup`, data);
   }
 
-  isAuthenticated(): boolean {
-    return true;
+  isAuthenticated() {
+    return this.getToken() ? true : false;
   }
 
   getToken(): string | null {
