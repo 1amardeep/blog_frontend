@@ -23,6 +23,13 @@ export class LoginComponent {
     });
   }
 
+  ngOnInit(): void {
+    if (this.questionService.getToken()) {
+      this.questionService.setToken(this.questionService.getToken()!);
+      this.router.navigate(['dashboard']);
+    }
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
