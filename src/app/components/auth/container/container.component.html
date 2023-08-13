@@ -1,10 +1,19 @@
 <mat-button-toggle-group
   name="fontStyle"
   aria-label="Font Style"
+  style="float: right"
   [(ngModel)]="isSignUpMode"
 >
-  <mat-button-toggle [value]="true">Sign Up</mat-button-toggle>
-  <mat-button-toggle [value]="false">Login</mat-button-toggle>
+  <mat-button-toggle
+    [value]="true"
+    [ngClass]="{ 'custom-toggle-button': isSignUpMode }"
+    >Sign Up</mat-button-toggle
+  >
+  <mat-button-toggle
+    [value]="false"
+    [ngClass]="{ 'custom-toggle-button': !isSignUpMode }"
+    >Login</mat-button-toggle
+  >
 </mat-button-toggle-group>
 
 <ng-container *ngIf="isSignUpMode; else elseTemplate">

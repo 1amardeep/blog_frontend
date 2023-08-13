@@ -37,5 +37,11 @@
       {{ getErrorMessage("password") }}
     </mat-error>
   </mat-form-field>
-  <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+  <button
+    type="submit"
+    [disabled]="signupForm.invalid"
+    class="custom-toggle-button"
+  >
+    Sign Up
+  </button>
 </form>
