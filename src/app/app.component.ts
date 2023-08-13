@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoadingService } from './service/spinner.service';
+import { QuestionService } from './service/question.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,8 @@ import { LoadingService } from './service/spinner.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(public loadingService: LoadingService) {}
+  constructor(
+    public loadingService: LoadingService,
+    public questionService: QuestionService
+  ) {}
 }

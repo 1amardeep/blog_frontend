@@ -17,6 +17,11 @@ import { QuillModule } from 'ngx-quill';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DoughnutChartComponent } from './components/doughnut-chart/doughnut-chart.component';
 import { NgChartsModule } from 'ng2-charts';
+import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { ContainerComponent } from './components/auth/container/container.component';
+import { AuthInterceptor } from './interceptors/authInterceptor';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +32,10 @@ import { NgChartsModule } from 'ng2-charts';
     PageNotFoundComponent,
     DashboardComponent,
     DoughnutChartComponent,
+    LoginComponent,
+    SignupComponent,
+    ContainerComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +48,7 @@ import { NgChartsModule } from 'ng2-charts';
     NgChartsModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,

@@ -1,0 +1,41 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="EMAIL" formControlName="email" required />
+    <mat-error
+      *ngIf="
+        signupForm.get('email')?.invalid && signupForm.get('email')?.touched
+      "
+    >
+      {{ getErrorMessage("email") }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Enter your password</mat-label>
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      placeholder="PASSWORD"
+      formControlName="password"
+      required
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+    <mat-error
+      *ngIf="
+        signupForm.get('password')?.invalid &&
+        signupForm.get('password')?.touched
+      "
+    >
+      {{ getErrorMessage("password") }}
+    </mat-error>
+  </mat-form-field>
+  <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+</form>

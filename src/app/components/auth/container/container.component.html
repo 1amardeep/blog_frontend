@@ -1,0 +1,15 @@
+<mat-button-toggle-group
+  name="fontStyle"
+  aria-label="Font Style"
+  [(ngModel)]="isSignUpMode"
+>
+  <mat-button-toggle [value]="true">Sign Up</mat-button-toggle>
+  <mat-button-toggle [value]="false">Login</mat-button-toggle>
+</mat-button-toggle-group>
+
+<ng-container *ngIf="isSignUpMode; else elseTemplate">
+  <app-signup></app-signup>
+</ng-container>
+<ng-template #elseTemplate>
+  <app-login> </app-login>
+</ng-template>

@@ -23,3 +23,13 @@ export interface AnalyticsData {
   category: string;
   color: string;
 }
+
+export interface User {
+  email: string;
+  password: string;
+}
+
+export interface IResponse {
+  message: string;
+  token: string;
+}

@@ -1,9 +1,18 @@
 <div *ngIf="loadingService.loading$ | async" class="spinnerContainer">
   <mat-spinner ngClass="spinner"></mat-spinner>
 </div>
-<mat-toolbar color="primary">
-  <mat-icon>edit</mat-icon>
-  <span [routerLink]="['/']" ngClass="">Web Technology Hub</span>
+<mat-toolbar color="primary" class="justify_content_space-between">
+  <div>
+    <mat-icon>edit</mat-icon>
+    <span [routerLink]="['/dashboard']" ngClass="">Web Technology Hub</span>
+  </div>
+  <div
+    routerLink="/logout"
+    ngClass="link"
+    *ngIf="questionService.tokenSubject$ | async"
+  >
+    Logout
+  </div>
 </mat-toolbar>
 
 <div class="container">

@@ -4,8 +4,10 @@ import {
   category,
   QuestionQuery,
   AnalyticsData,
+  User,
+  IResponse,
 } from '../models/question';
-import { Observable, from } from 'rxjs';
+import { BehaviorSubject, Observable, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
@@ -15,6 +17,11 @@ const apiUrl = environment.apiUrl;
   providedIn: 'root',
 })
 export class QuestionService {
+  private authTokenKey = 'authToken';
+
+  private tokenSubject = new BehaviorSubject<boolean>(false);
+  public tokenSubject$ = this.tokenSubject.asObservable();
+
   constructor(private http: HttpClient) {}
 
   addQuestion(question: question): Observable<question> {
@@ -47,5 +54,31 @@ export class QuestionService {
 
   getAnalyticsData(): Observable<AnalyticsData[]> {
     return this.http.get<AnalyticsData[]>(`${apiUrl}/getAnalyticsData`);
+  }
+
+  login(data: User) {
+    return this.http.post<IResponse>(`${apiUrl}/login`, data);
+  }
+
+  signUp(data: User) {
+    return this.http.post<IResponse>(`${apiUrl}/signup`, data);
+  }
+
+  isAuthenticated(): boolean {
+    return true;
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.authTokenKey);
+  }
+
+  setToken(token: string): void {
+    this.tokenSubject.next(true);
+    localStorage.setItem(this.authTokenKey, token);
+  }
+
+  clearToken() {
+    this.tokenSubject.next(false);
+    localStorage.removeItem(this.authTokenKey);
   }
 }
