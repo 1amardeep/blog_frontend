@@ -18,10 +18,15 @@ export interface QuestionQuery {
   category: string;
 }
 
-export interface AnalyticsData {
+interface AnalyticsDataSet {
   count: number;
   category: string;
   color: string;
+}
+
+export interface AnalyticsData {
+  results: AnalyticsDataSet[];
+  totalCount: number;
 }
 
 export interface User {

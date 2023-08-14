@@ -27,6 +27,8 @@ export class LoginComponent {
     if (this.questionService.getToken()) {
       this.questionService.setToken(this.questionService.getToken()!);
       this.router.navigate(['dashboard']);
+    } else {
+      this.questionService.clearToken();
     }
   }
 

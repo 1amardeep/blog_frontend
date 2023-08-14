@@ -1,10 +1,13 @@
-<canvas
-  baseChart
-  [type]="'doughnut'"
-  [datasets]="doughnutChartDatasets"
-  [labels]="doughnutChartLabels"
-  [options]="doughnutChartOptions"
-  [plugins]="doughnutChartPlugins"
-  [legend]="doughnutChartLegend"
->
-</canvas>
+<div style="position: relative">
+  <canvas
+    baseChart
+    [type]="'doughnut'"
+    [datasets]="doughnutChartDatasets"
+    [labels]="doughnutChartLabels"
+    [options]="doughnutChartOptions"
+    [plugins]="doughnutChartPlugins"
+    [legend]="doughnutChartLegend"
+  >
+  </canvas>
+  <div class="totalQuestion">Total: {{ totalQuestion }}</div>
+</div>

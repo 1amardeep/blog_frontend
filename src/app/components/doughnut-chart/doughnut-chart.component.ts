@@ -9,6 +9,7 @@ import { QuestionService } from 'src/app/service/question.service';
 })
 export class DoughnutChartComponent {
   public chart: any;
+  public totalQuestion: number = 0;
   // Doughnut
   public doughnutChartOptions: any = {
     responsive: false,
@@ -31,11 +32,12 @@ export class DoughnutChartComponent {
   ngOnInit(): void {
     this.questionService.getAnalyticsData().subscribe((data) => {
       const { count, category, color } = {
-        count: data.map((item) => item.count),
-        category: data.map((item) => item.category),
-        color: data.map((item) => item.color),
+        count: data.results.map((item) => item.count),
+        category: data.results.map((item) => item.category),
+        color: data.results.map((item) => item.color),
       };
       this.createChart(count, category, color);
+      this.totalQuestion = data.totalCount;
     });
   }
 
