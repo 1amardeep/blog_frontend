@@ -29,6 +29,7 @@ export class QuestionFormComponent implements OnInit {
       title: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
+      sharedLevel: ['public', Validators.required],
     });
   }
 
@@ -44,6 +45,8 @@ export class QuestionFormComponent implements OnInit {
         category: this.formGroup.value.category,
         color,
         date: new Date(),
+        userId: this.questionService.getUserId()!,
+        sharedLevel: this.formGroup.value.sharedLevel,
       };
       this.questionService.addQuestion(question).subscribe(() => {
         this.router.navigate(['/questionList']);

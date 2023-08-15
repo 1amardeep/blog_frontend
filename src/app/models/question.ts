@@ -4,6 +4,8 @@ export interface question {
   category: string;
   date: Date;
   color: string;
+  userId: string;
+  sharedLevel: string;
 }
 
 export interface category {
@@ -37,4 +39,5 @@ export interface User {
 export interface IResponse {
   message: string;
   token: string;
+  userId: string;
 }

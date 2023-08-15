@@ -18,6 +18,7 @@ const apiUrl = environment.apiUrl;
 })
 export class QuestionService {
   private authTokenKey = 'authToken';
+  private userIdKey = 'userId';
 
   private tokenSubject = new BehaviorSubject<boolean>(false);
   public tokenSubject$ = this.tokenSubject.asObservable();
@@ -30,6 +31,8 @@ export class QuestionService {
       description: question.description,
       category: question.category,
       color: question.color,
+      sharedLevel: question.sharedLevel,
+      userId: question.userId,
     });
   }
 
@@ -72,13 +75,22 @@ export class QuestionService {
     return localStorage.getItem(this.authTokenKey);
   }
 
+  getUserId(): string | null {
+    return localStorage.getItem(this.userIdKey);
+  }
+
   setToken(token: string): void {
     this.tokenSubject.next(true);
     localStorage.setItem(this.authTokenKey, token);
   }
 
+  setUserId(userId: string): void {
+    localStorage.setItem(this.userIdKey, userId);
+  }
+
   clearToken() {
     this.tokenSubject.next(false);
     localStorage.removeItem(this.authTokenKey);
+    localStorage.removeItem(this.userIdKey);
   }
 }

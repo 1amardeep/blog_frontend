@@ -28,8 +28,8 @@ export class SignupComponent {
       const formData = this.signupForm.value;
       this.questionService.signUp(formData).subscribe(
         (signUp) => {
-          console.log(signUp.message);
           this.questionService.setToken(signUp.token);
+          this.questionService.setUserId(signUp.userId);
           this.router.navigate(['dashboard']);
         },
         (error) => {

@@ -26,6 +26,7 @@ export class LoginComponent {
   ngOnInit(): void {
     if (this.questionService.getToken()) {
       this.questionService.setToken(this.questionService.getToken()!);
+      this.questionService.setUserId(this.questionService.getUserId()!);
       this.router.navigate(['dashboard']);
     } else {
       this.questionService.clearToken();
@@ -37,8 +38,8 @@ export class LoginComponent {
       const formData = this.loginForm.value;
       this.questionService.login(formData).subscribe(
         (login) => {
-          console.log(login.message);
           this.questionService.setToken(login.token);
+          this.questionService.setUserId(login.userId);
           this.router.navigate(['dashboard']);
         },
         (error) => {

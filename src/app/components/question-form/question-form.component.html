@@ -16,6 +16,15 @@
     </mat-select>
   </mat-form-field>
 
+  <mat-radio-group aria-label="Select an option" formControlName="sharedLevel">
+    <mat-radio-button [value]="'private'" color="primary"
+      >Private</mat-radio-button
+    >
+    <mat-radio-button [value]="'public'" color="primary"
+      >Public</mat-radio-button
+    >
+  </mat-radio-group>
+
   <div class="padding_xy_1">Answer</div>
   <quill-editor
     formControlName="description"
