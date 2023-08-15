@@ -3,7 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { question, category, QuestionQuery } from 'src/app/models/question';
 import { QuestionService } from 'src/app/service/question.service';
 import { MatPaginatorIntl } from '@angular/material/paginator';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   PAGE_INDEX,
   PAGE_SIZE,
@@ -21,6 +21,7 @@ export class QuestionListComponent implements OnInit {
   questions: question[] = [];
   selected = 'All';
   Categories: category[] = [];
+  sharedLevel!: string;
 
   length!: number;
   pageSize: number = PAGE_SIZE;
@@ -31,10 +32,15 @@ export class QuestionListComponent implements OnInit {
   constructor(
     private questionService: QuestionService,
     private paginator: MatPaginatorIntl,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.sharedLevel = params.get('id')!;
+    });
+
     this.questionService.getSubjectCategory().subscribe((data) => {
       this.Categories = [
         { value: 'all', viewValue: 'All', color: '' },
@@ -81,6 +87,8 @@ export class QuestionListComponent implements OnInit {
       pageIndex: this.pageIndex,
       pageSize: this.pageSize,
       category: this.selected,
+      sharedLevel: this.sharedLevel,
+      userId: this.questionService.getUserId()!,
     };
   }
 

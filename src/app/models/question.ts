@@ -18,6 +18,8 @@ export interface QuestionQuery {
   pageIndex: number;
   pageSize: number;
   category: string;
+  sharedLevel: string;
+  userId: string;
 }
 
 interface AnalyticsDataSet {
@@ -29,6 +31,8 @@ interface AnalyticsDataSet {
 export interface AnalyticsData {
   results: AnalyticsDataSet[];
   totalCount: number;
+  publicCount: number;
+  privateCount: number;
 }
 
 export interface User {

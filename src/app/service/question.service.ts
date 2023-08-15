@@ -55,8 +55,8 @@ export class QuestionService {
     return this.http.get<category[]>(`${apiUrl}/getSubjectCategory`);
   }
 
-  getAnalyticsData(): Observable<AnalyticsData> {
-    return this.http.get<AnalyticsData>(`${apiUrl}/getAnalyticsData`);
+  getAnalyticsData(userId: string | null): Observable<AnalyticsData> {
+    return this.http.get<AnalyticsData>(`${apiUrl}/getAnalyticsData/${userId}`);
   }
 
   login(data: User) {

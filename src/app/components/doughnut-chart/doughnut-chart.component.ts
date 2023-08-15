@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { ChartOptions } from 'chart.js';
-import { QuestionService } from 'src/app/service/question.service';
+import { Component, Input } from '@angular/core';
+import { AnalyticsData } from 'src/app/models/question';
 
 @Component({
   selector: 'app-doughnut-chart',
@@ -8,6 +7,7 @@ import { QuestionService } from 'src/app/service/question.service';
   styleUrls: ['./doughnut-chart.component.scss'],
 })
 export class DoughnutChartComponent {
+  @Input() chartData!: AnalyticsData;
   public chart: any;
   public totalQuestion: number = 0;
   // Doughnut
@@ -27,18 +27,14 @@ export class DoughnutChartComponent {
     },
   ];
 
-  constructor(private questionService: QuestionService) {}
-
-  ngOnInit(): void {
-    this.questionService.getAnalyticsData().subscribe((data) => {
-      const { count, category, color } = {
-        count: data.results.map((item) => item.count),
-        category: data.results.map((item) => item.category),
-        color: data.results.map((item) => item.color),
-      };
-      this.createChart(count, category, color);
-      this.totalQuestion = data.totalCount;
-    });
+  ngAfterViewInit(): void {
+    const { count, category, color } = {
+      count: this.chartData.results.map((item) => item.count),
+      category: this.chartData.results.map((item) => item.category),
+      color: this.chartData.results.map((item) => item.color),
+    };
+    this.createChart(count, category, color);
+    this.totalQuestion = this.chartData.totalCount;
   }
 
   createChart(count: number[], category: string[], color: string[]) {

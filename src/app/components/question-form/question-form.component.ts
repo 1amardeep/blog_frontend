@@ -49,7 +49,7 @@ export class QuestionFormComponent implements OnInit {
         sharedLevel: this.formGroup.value.sharedLevel,
       };
       this.questionService.addQuestion(question).subscribe(() => {
-        this.router.navigate(['/questionList']);
+        this.router.navigate(['/questionList', 'All']);
       });
     }
   }

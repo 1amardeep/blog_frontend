@@ -22,6 +22,7 @@ import { SignupComponent } from './components/auth/signup/signup.component';
 import { ContainerComponent } from './components/auth/container/container.component';
 import { AuthInterceptor } from './interceptors/authInterceptor';
 import { LogoutComponent } from './components/logout/logout.component';
+import { DashboardLinkComponent } from './components/dashboard-link/dashboard-link.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     SignupComponent,
     ContainerComponent,
     LogoutComponent,
+    DashboardLinkComponent,
   ],
   imports: [
     BrowserModule,

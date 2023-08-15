@@ -1,13 +1,24 @@
 <div class="container">
   <div class="box box_col_dir">
     <h2>Question Analysis Data</h2>
-    <app-doughnut-chart></app-doughnut-chart>
+    <app-doughnut-chart
+      [chartData]="chartData"
+      *ngIf="chartData"
+    ></app-doughnut-chart>
   </div>
   <div class="box box_col_dir">
     <div class="d_flex justify_content_space-between w_100">
       <h2>Top 5 Trending Questions</h2>
-      <h2><a [routerLink]="['/questionList']">View All</a></h2>
+      <h2><a [routerLink]="['/questionList', 'All']">View All</a></h2>
     </div>
     <app-question-list class="w_100" [Islimit]="true"></app-question-list>
+  </div>
+  <div class="box box_col_dir">
+    <app-dashboard-link
+      class="w_100"
+      [privateCount]="privateCount"
+      [publicCount]="publicCount"
+      [totalCount]="totalCount"
+    ></app-dashboard-link>
   </div>
 </div>

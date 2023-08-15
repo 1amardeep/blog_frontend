@@ -1,0 +1,13 @@
+<mat-card class="margin_auto margin_top_1 margin_bottom_1 p_1_rem">
+  <mat-card-title>Community Question Activity</mat-card-title>
+  <div class="p_1_rem">
+    <div>
+      My Questions :
+      <a [routerLink]="['/questionList', 'private']">{{ privateCount }}</a>
+    </div>
+    <div>
+      Shared Questions :
+      <a [routerLink]="['/questionList', 'public']">{{ publicCount }}</a>
+    </div>
+  </div>
+</mat-card>
