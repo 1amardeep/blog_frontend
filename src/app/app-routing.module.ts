@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ContainerComponent } from './components/auth/container/container.component';
 import { AuthGuard } from './service/authGuard.service';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
   {
     path: 'analyticData',
     component: DoughnutChartComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
     canActivate: [AuthGuard],
   },
   { path: '**', component: PageNotFoundComponent },

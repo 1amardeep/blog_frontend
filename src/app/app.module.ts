@@ -23,6 +23,10 @@ import { ContainerComponent } from './components/auth/container/container.compon
 import { AuthInterceptor } from './interceptors/authInterceptor';
 import { LogoutComponent } from './components/logout/logout.component';
 import { DashboardLinkComponent } from './components/dashboard-link/dashboard-link.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
+const config: SocketIoConfig = { url: environment.serverAddress, options: {} };
 
 @NgModule({
   declarations: [
@@ -38,6 +42,7 @@ import { DashboardLinkComponent } from './components/dashboard-link/dashboard-li
     ContainerComponent,
     LogoutComponent,
     DashboardLinkComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import { DashboardLinkComponent } from './components/dashboard-link/dashboard-li
     HttpClientModule,
     QuillModule.forRoot(),
     NgChartsModule,
+    SocketIoModule.forRoot(config),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
